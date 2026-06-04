@@ -86,4 +86,4 @@ Also implement the missing real-world modules in `step_2_prompt.md` and `step_2_
 - User preferences, saved filters, dashboard widgets, global search, command palette, notifications, comments, tags, tasks, and approval workflows.
 - Tax codes, bank accounts, payments, payment allocations, quote requests, quotes, customer contracts, carrier rate agreements, and load tenders.
 - Dock appointments, yard spots, yard moves, maintenance work orders, service schedules, insurance policies, accident incidents, driver HOS logs, ELD events, shipment tracking, portal accounts, mobile sessions, EDI messages, templates, import jobs, reports, webhooks, and barcode labels.
-- If `disp_trans_sql.sql` is available, reconcile its dispatch transaction tables into the canonical order/trip/event/payment/document model rather than creating duplicate production tables.
+- Reconcile the included legacy `disp_trans_sql.sql` dispatch transaction dump through `disp_trans_sql_mapping.md` and `disp_trans_migration_support.sql`; production modules must use the canonical order/trip/event/payment/document model rather than duplicate legacy tables.

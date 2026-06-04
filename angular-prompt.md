@@ -129,5 +129,6 @@ Include the real-world usability modules from `step_2_prompt.md` and `step_2_mis
 - Driver mobile views for HOS logs, ELD events, trip events, POD/PTI/fuel document upload, and offline-friendly task capture.
 - Customer/carrier portal screens for shipment tracking, documents, invoices, tenders, and status updates.
 - EDI message monitor, import job error review, report builder/scheduled reports, webhook delivery log, document/email template designer, barcode/QR label generation.
+- Legacy `disp_trans_sql.sql` migration console for batch progress, source table inventory, field/status mapping review, rejected-row correction, checkpoint restart, and old-ID lookup through `legacy_entity_mappings`.
 
 Every step-2 screen must keep the same UX rules: server-side grids, saved filters, bulk actions, status badges, timeline/audit tabs, drag-and-drop documents, and plain-language validation.

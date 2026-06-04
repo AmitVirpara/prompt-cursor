@@ -1,8 +1,8 @@
 # Step 2 Prompt: Real-World Easy-to-Use Logistics ERP
 
-Extend the Logistics ERP from `main-prompt.md`, `sample1_date.sql`, and `sample1_date_data.sql` into a production-ready, easy-to-use system. Use `step_2_missing_functionality.sql` and `step_2_missing_functionality_data.sql` for missing real-world modules.
+Extend the Logistics ERP from `main-prompt.md`, `sample1_date.sql`, and `sample1_date_data.sql` into a production-ready, easy-to-use system. Use `step_2_missing_functionality.sql`, `step_2_missing_functionality_data.sql`, `disp_trans_sql_mapping.md`, and `disp_trans_migration_support.sql` for missing real-world modules and legacy dispatch migration.
 
-Important source note: the requested `disp_trans_sql.sql` file is not present in the current repository checkout or `origin/main` at the time this step-2 branch was created. When that file is available, treat it as a legacy dispatch transaction source and map its tables/columns into the canonical schema below instead of building a second duplicate transaction model.
+Important source note: `disp_trans_sql.sql` is now included as a legacy MySQL 5.6/phpMyAdmin dispatch database dump for `iwaytransca`. Treat it as a staging/migration source only. Use `disp_trans_sql_mapping.md` and `disp_trans_migration_support.sql` to map its tables/columns into the canonical schema instead of building a second duplicate transaction model.
 
 ## Product goal
 
@@ -95,7 +95,7 @@ Create a fast, simple, scalable ERP where dispatchers, accounting users, drivers
 
 ## Legacy dispatch transaction SQL mapping rules
 
-When `disp_trans_sql.sql` is available:
+Use `disp_trans_sql.sql` as follows:
 
 1. Inventory its tables and columns.
 2. Identify dispatch transaction concepts:
@@ -108,6 +108,7 @@ When `disp_trans_sql.sql` is available:
 3. Preserve useful legacy codes in external reference fields or add migration mapping tables if required.
 4. Do not keep duplicate order/trip/payment tables unless a table is strictly needed as a staging table.
 5. Write migration scripts that can be rerun safely in a staging database.
+6. Preserve every legacy source ID through `legacy_entity_mappings`, and capture rejected rows in `legacy_rejected_rows`.
 
 ## Easy-to-use UI rules
 
@@ -186,5 +187,7 @@ When `disp_trans_sql.sql` is available:
 - Add `step_2_missing_functionality.sql`.
 - Add `step_2_missing_functionality_data.sql`.
 - Add this `step_2_prompt.md`.
+- Add `disp_trans_sql_mapping.md`.
+- Add `disp_trans_migration_support.sql` and `disp_trans_migration_support_data.sql`.
 - Update Angular, Laravel, and Spring Boot prompts so generated apps include the step-2 modules.
-- Once `disp_trans_sql.sql` exists in the repository, create a follow-up mapping file named `disp_trans_sql_mapping.md` and migration SQL if needed.
+- Use `disp_trans_sql.sql` only as the legacy source/staging model; production code must use the normalized ERP schema.
