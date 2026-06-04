@@ -108,3 +108,15 @@ Build a Laravel 12 backend API for the Logistics ERP described in `main-prompt.m
 - Feature tests for auth, company scoping, RBAC, order creation, trip creation, trip event sequencing, fuel upload, document upload, accounting verification, statement generation.
 - Unit tests for calculators: shipment weight/volume, trip miles, order totals, invoice totals, settlement totals.
 - Database tests must use migrations matching `sample1_date.sql`.
+
+## Step 2 backend modules
+
+Implement the extension schema and workflows from `step_2_prompt.md` and `step_2_missing_functionality.sql`:
+
+- Preferences, saved filters, dashboard widgets, notifications, deliveries, comments, task boards, tasks, tags, approvals, and workflow definitions.
+- Tax codes, bank accounts, payments, payment allocations, quote requests, quotes, quote lines, customer contracts, contract lanes, carrier rate agreements, carrier rate lanes, load tenders, and tender responses.
+- Dock appointments, yard spots, yard moves, maintenance work orders, service schedules, insurance policies, accident incidents, HOS logs, ELD events, shipment tracking events, portal accounts, mobile device sessions, EDI messages, templates, import jobs/errors, reports, scheduled reports, webhooks, webhook deliveries, and barcode labels.
+- Jobs for notification delivery, tender expiry, service reminders, insurance/compliance expiry, import processing, EDI processing, report scheduling, webhook retries, and shipment tracking publication.
+- If `disp_trans_sql.sql` becomes available, create a mapping/migration layer that converts legacy dispatch transaction rows into `orders`, `order_stops`, `trips`, `trip_events`, `trip_event_orders`, `trip_expenses`, `invoices`, `bills`, `payments`, and `document_attachments`.
+
+Add feature tests for quote-to-order, carrier tender response, dock appointment check-in, yard move, work order close, payment allocation, approval workflow, HOS certification, shipment tracking event visibility, import error handling, webhook retry, and EDI 214 generation.

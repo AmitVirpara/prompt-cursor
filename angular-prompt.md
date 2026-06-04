@@ -117,3 +117,17 @@ Create a modern Angular application for the Logistics ERP described in `main-pro
 - Typed API DTOs based on schema names.
 - Route guards and permission directives.
 - Unit tests for guards, services, order form validation, and trip event ordering.
+
+## Step 2 frontend modules
+
+Include the real-world usability modules from `step_2_prompt.md` and `step_2_missing_functionality.sql`:
+
+- User preferences, saved filters, dashboard builder widgets, global search, command palette, keyboard shortcuts, notification center, comments drawer, tags, task boards, and approval inbox.
+- Quote request and quote workflow, quote-to-order conversion, customer contracts, carrier rate agreements, rate lookup screens, load tender send/response screens.
+- Payment entry, payment allocation, bank account management, tax-code setup, AR/AP reconciliation views.
+- Dock appointment calendar, yard spot map/list, yard move workflow, maintenance work orders, preventive service schedules, insurance policy tracker, incident reporting.
+- Driver mobile views for HOS logs, ELD events, trip events, POD/PTI/fuel document upload, and offline-friendly task capture.
+- Customer/carrier portal screens for shipment tracking, documents, invoices, tenders, and status updates.
+- EDI message monitor, import job error review, report builder/scheduled reports, webhook delivery log, document/email template designer, barcode/QR label generation.
+
+Every step-2 screen must keep the same UX rules: server-side grids, saved filters, bulk actions, status badges, timeline/audit tabs, drag-and-drop documents, and plain-language validation.

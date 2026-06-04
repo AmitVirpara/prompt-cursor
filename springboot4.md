@@ -119,3 +119,15 @@ Build a Spring Boot 4 backend API for the Logistics ERP described in `main-promp
 - Security tests for company scoping and permissions.
 - Service tests for order creation, trip event ordering, fuel import, document expiry, invoice generation, statement generation, settlement approval, inventory assignment.
 - Repository tests for indexed query paths and filters.
+
+## Step 2 backend modules
+
+Implement the extension schema and workflows from `step_2_prompt.md` and `step_2_missing_functionality.sql`:
+
+- Preferences, saved filters, dashboard widgets, notifications, deliveries, comments, task boards, tasks, tags, approvals, and workflow definitions.
+- Tax codes, bank accounts, payments, payment allocations, quote requests, quotes, quote lines, customer contracts, contract lanes, carrier rate agreements, carrier rate lanes, load tenders, and tender responses.
+- Dock appointments, yard spots, yard moves, maintenance work orders, service schedules, insurance policies, accident incidents, HOS logs, ELD events, shipment tracking events, portal accounts, mobile device sessions, EDI messages, templates, import jobs/errors, reports, scheduled reports, webhooks, webhook deliveries, and barcode labels.
+- Scheduled jobs for notification delivery, tender expiry, service reminders, insurance/compliance expiry, import processing, EDI processing, report delivery, webhook retries, and tracking publication.
+- If `disp_trans_sql.sql` becomes available, build an idempotent migration service that maps legacy dispatch transaction rows into canonical order, trip, event, payment, statement, document, and tracking models.
+
+Add integration/service tests for quote-to-order, carrier tender response, dock appointment check-in, yard move, maintenance closeout, payment allocation, approval workflow, HOS certification, shipment tracking event visibility, import error handling, webhook retry, and EDI 214 generation.
