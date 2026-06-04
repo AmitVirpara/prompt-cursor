@@ -232,6 +232,7 @@ JAVA;
     private function writeController(string $table, string $entity, array $columns): void
     {
         $idType = $this->idJavaType($columns);
+        $primaryField = $this->camel($this->primaryColumn($columns) ?? 'id');
         $route = $this->kebab($table);
         $service = "{$entity}Service";
         $searchable = array_map(fn (array $column): string => $this->camel($column['COLUMN_NAME']), array_filter($columns, fn (array $column): bool => $this->isTextColumn($column)));
@@ -285,7 +286,7 @@ public class {$entity}Controller {
             @RequestParam Map<String, String> params,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "25") int size,
-            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "{$primaryField}") String sortBy,
             @RequestParam(defaultValue = "desc") String sortDir,
             @RequestParam(required = false) String search
     ) {
@@ -415,6 +416,17 @@ JAVA;
         }
 
         return 'Long';
+    }
+
+    private function primaryColumn(array $columns): ?string
+    {
+        foreach ($columns as $column) {
+            if ($column['COLUMN_KEY'] === 'PRI') {
+                return $column['COLUMN_NAME'];
+            }
+        }
+
+        return null;
     }
 
     private function isTextColumn(array $column): bool
